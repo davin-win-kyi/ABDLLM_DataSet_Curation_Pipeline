@@ -1,0 +1,105 @@
+# Technique ARIA17: Using grouping roles to identify related form controls
+
+## About this Technique
+
+This technique relates to:
+
+* [1.3.1: Info and Relationships](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships) (Sufficient)
+* [3.3.2: Labels or Instructions](https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions) (Sufficient when used with [G131: Providing descriptive labels](../general/G131))
+
+This technique applies to technologies that support [Accessible Rich Internet Applications (WAI-ARIA)](https://www.w3.org/TR/wai-aria/).
+
+## Description
+
+The objective of this technique is to mark up a set of related controls within a form as a group. Any label associated with the group also serves as a common label or qualifier for individual controls in the group. Assistive technologies can indicate the start and end of the group and the group's label as one navigates into and out of the group. This is a viable alternative for grouping form controls programmatically when the user interface's design makes it difficult to employ the fieldset / legend technique ([H71](../html/H71)).
+
+For a group of radio buttons, one should use role="radiogroup" instead of role="group".
+
+The group can be labeled using aria-labelledby.
+
+This technique is not meant for wrapping all controls on a form within a single container with role="group".
+
+## Examples
+
+### Example 1: Social Security Number
+
+Social security number fields which are nine digits long and broken up into three segments can be grouped using role="group".
+
+```html
+<div role="group" aria-labelledby="ssn1">
+  <span id="ssn1">Social Security Number</span> 
+  <span style="color: #D90D0D;"> (required)</span>
+  <input size="3" type="text" aria-required="true" title="First 3 digits">-
+  <input size="2" type="text" aria-required="true" title="Next 2 digits">-
+  <input size="4" type="text" aria-required="true" title="Last 4 digits">
+</div>
+```
+
+Working example: [Multiple part field groups](../../working-examples/aria-grouping-multipart-fields-ssn/).
+
+### Example 2: Identifying radio groups
+
+This example demonstrates use role=radiogroup. Note also that the radio buttons are custom controls with role=radio. One may optionally employ CSS to place a border around groups of such fields to visually reinforce the group relationship. The CSS properties are available below the form.
+
+```html
+<h3>Set Alerts for your Account</h3>
+<div role="radiogroup" aria-labelledby="alert1">
+  <p id="alert1">Send an alert when balance exceeds $3,000</p>
+  <div>
+    <span role="radio" aria-checked="false" aria-labelledby="a1r1" name="a1radio"></span>
+    <span id="a1r1">Yes</span>
+  </div>
+  <div>
+    <span role="radio" aria-checked="false" aria-labelledby="a1r2" name="a1radio"></span>
+    <span id="a1r2">No</span>
+  </div>
+</div>
+<div role="radiogroup" aria-checked="false" aria-labelledby="alert2">
+  <p id="alert2">Send an alert when a charge exceeds $250</p>
+  <div>
+    <span role="radio" aria-checked="false" aria-labelledby="a2r1" name="a2radio"></span>
+    <span id="a2r1">Yes</span>
+  </div>
+  <div>
+    <span role="radio" aria-checked="false" aria-labelledby="a2r2" name="a2radio"></span>
+    <span id="a2r2">No</span>
+   </div>
+</div>
+<input type="submit" value="Continue" name="continue_btn">
+```
+
+Related CSS Style Definition to place a border around the group of fields:
+
+```css
+div[role=radiogroup] {
+  border: black thin solid;
+}
+```
+
+Working example: [using grouping roles to identify related form controls](../../working-examples/aria-grouping-related-fields/).
+
+Note
+
+## Related Resources
+
+No endorsement implied.
+
+* [ARIA group role](https://www.w3.org/TR/wai-aria/#group)
+* [ARIA radiogroup role](https://www.w3.org/TR/wai-aria/#radiogroup)
+
+## Related Techniques
+
+* [H71: Providing a description for groups of form controls using fieldset and legend elements](../html/H71)
+
+## Tests
+
+### Procedure
+
+For groups of related controls where the individual labels for each control do not provide a sufficient description, and an additional group level description is needed:
+
+1. Check that the group of logically related input or select elements are contained within an element with role=group, or role=radiogroup depending on the type of elements the group contains.
+2. Check that this group has an accessible name defined using aria-label or aria-labelledby.
+
+### Expected Results
+
+* #1 and #2 are true.
