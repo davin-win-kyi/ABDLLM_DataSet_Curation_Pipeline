@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Low Saturation • Small UI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* Global: small text, low-sat grays */
+    html, body {
+      margin: 0; padding: 8px;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      font-size: 12px; line-height: 1.3;
+      background: hsl(0 0% 98%);
+      color: hsl(0 0% 20%);
+    }
+    .card {
+      width: 220px;
+      border: 1px solid hsl(0 0% 85%);
+      border-radius: 6px;
+      background: hsl(0 0% 100%);
+      padding: 8px;
+      box-shadow: 0 1px 2px hsl(0 0% 0% / 0.05);
+    }
+    .row { display: flex; align-items: center; gap: 6px; margin-top: 6px; }
+    .label { min-width: 52px; color: hsl(0 0% 30%); }
+
+    /* Small, low-sat controls */
+    input[type="text"] {
+      width: 120px; height: 22px;
+      padding: 2px 6px;
+      border: 1px solid hsl(0 0% 75%);
+      background: hsl(0 0% 98%);
+      color: hsl(0 0% 20%);
+      border-radius: 4px;
+      font-size: 12px;
+    }
+    button {
+      width: 80px; height: 24px;
+      border: 1px solid hsl(0 0% 70%);
+      background: hsl(0 0% 90%);
+      color: hsl(0 0% 20%);
+      border-radius: 4px;
+      font-size: 12px;
+    }
+    a {
+      color: hsl(210 10% 35%); /* muted blue-gray (low saturation) */
+      text-decoration: none;
+      font-size: 12px;
+    }
+    a:hover { text-decoration: underline; }
+
+    .muted-badge {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: hsl(0 0% 92%);
+      color: hsl(0 0% 30%);
+      border: 1px solid hsl(0 0% 80%);
+      font-size: 11px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card" role="region" aria-label="Sign-in panel">
+    <div class="row" style="margin-top: 0;">
+      <span class="muted-badge">beta</span>
+      <span style="font-weight:600; color:hsl(0 0% 25%);">Sign in</span>
+    </div>
+
+    <div class="row">
+      <span class="label">Email</span>
+      <input type="text" placeholder="name@example.com" aria-label="email input" />
+    </div>
+
+    <div class="row">
+      <span class="label">Pass</span>
+      <input type="text" placeholder="••••••••" aria-label="password input" />
+    </div>
+
+    <div class="row" style="justify-content: space-between;">
+      <a href="#forgot" aria-label="forgot password link">Forgot?</a>
+      <button type="submit" aria-label="submit form">Submit</button>
+    </div>
+  </div>
+</body>
+</html>

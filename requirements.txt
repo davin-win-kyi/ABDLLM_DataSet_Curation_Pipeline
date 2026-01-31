@@ -1,0 +1,9 @@
+# Core HTTP + scraping
+requests>=2.31.0
+beautifulsoup4>=4.12.2
+
+# Selenium browser automation
+selenium>=4.16.0
+
+# Optional but strongly recommended for Selenium stability
+webdriver-manager>=4.0.1

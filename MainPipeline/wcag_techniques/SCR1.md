@@ -1,0 +1,31 @@
+# Technique SCR1: Allowing the user to extend the default time limit
+
+## About this Technique
+
+This technique relates to [2.2.1: Timing Adjustable](https://www.w3.org/WAI/WCAG22/Understanding/timing-adjustable) (Sufficient, together with [SCR16: Providing a script that warns the user a time limit is about to expire](../client-side-script/SCR16)).
+
+This technique applies to time limits that are controlled by client-side scripting.
+
+## Description
+
+The objective of this technique is to allow user to extend the default time limit by providing a mechanism to extend the time when scripts provide functionality that has default time limits. In order to allow the user to request a longer time limit, the script can provide a form allowing the user to enter a larger time limit or indicating that more time is needed. If the user is being warned that a time limit is about to expire (see [providing a script that warns the user a time limit is about to expire](SCR16)), this form can be made available from the warning dialog. The user can extend the time limit to at least 10 times the default time limit, either by allowing the user to indicate how much additional time is needed or by repeatedly allowing the user to extend the time limit.
+
+## Examples
+
+* A web page contains current stock market statistics and is set to refresh periodically. When the user is warned prior to refreshing the first time, the user is provided with an option to extend the time period between refreshes.
+* In an online chess game, each player is given a time limit for completing each move. When the player is warned that time is almost up for this move, the user is provided with an option to increase the time.
+
+## Related Techniques
+
+* [SCR16: Providing a script that warns the user a time limit is about to expire](../client-side-script/SCR16)
+
+## Tests
+
+### Procedure
+
+1. On a web page that uses scripts to enforce a time limit, wait until the time limit has expired.
+2. Determine if an option was provided to extend the time limit.
+
+### Expected Results
+
+* 2 is true and more time is provided to complete the interaction.

@@ -1,0 +1,14 @@
+{
+  "intial_profile": {
+    "user_description": [
+      "low vision", "hand tremor", "mild short-term memory loss"
+    ],
+    "user_language": "English",
+    "os": "macos",
+    "browser": {
+      "name": "Chrome",
+      "version": "latest"
+    },
+    "assistive tech": "voiceover"
+  }
+}

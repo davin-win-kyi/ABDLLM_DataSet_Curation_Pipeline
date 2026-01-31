@@ -1,0 +1,173 @@
+{
+  "Elements": [
+    {
+      "ID": "825ad325b9d2ad80",
+      "Element_descriptor": "<div> class=\"card\" aria-label=\"Sign-in panel\"\" text=\"beta Sign in Email Pass Forgot? Submit\"; size=238x136px, color=rgb(51, 51, 51), bg=rgb(255, 255, 255), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+      "Element_type": "div",
+      "Neighbor_elements": [
+        "<div> class=\"row\" text=\"Pass\"; size=220x28px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"row\" text=\"Email\"; size=220x28px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<input> aria-label=\"password input\"\" placeholder=\"••••••••\"; size=134x28px, color=rgb(51, 51, 51), bg=rgb(250, 250, 250), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<input> aria-label=\"email input\"\" placeholder=\"name@example.com\"; size=134x28px, color=rgb(51, 51, 51), bg=rgb(250, 250, 250), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"row\" text=\"Forgot? Submit\"; size=220x24px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%"
+      ],
+      "Element feedback": []
+    },
+    {
+      "ID": "a33e07f914821f8e",
+      "Element_descriptor": "<div> class=\"row\" text=\"beta Sign in\"; size=220x20px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+      "Element_type": "div",
+      "Neighbor_elements": [
+        "<div> class=\"row\" text=\"Email\"; size=220x28px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<input> aria-label=\"email input\"\" placeholder=\"name@example.com\"; size=134x28px, color=rgb(51, 51, 51), bg=rgb(250, 250, 250), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<span> text=\"Sign in\"; size=40x16px, color=rgb(64, 64, 64), font-size=12px, font-weight=600, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"card\" aria-label=\"Sign-in panel\"\" text=\"beta Sign in Email Pass Forgot? Submit\"; size=238x136px, color=rgb(51, 51, 51), bg=rgb(255, 255, 255), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"row\" text=\"Pass\"; size=220x28px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%"
+      ],
+      "Element feedback": []
+    },
+    {
+      "ID": "9d1f058a4986e7f9",
+      "Element_descriptor": "<span> class=\"muted-badge\" text=\"beta\"; size=37x20px, color=rgb(77, 77, 77), bg=rgb(235, 235, 235), font-size=11px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+      "Element_type": "span",
+      "Neighbor_elements": [
+        "<span> class=\"label\" text=\"Email\"; size=52x16px, color=rgb(77, 77, 77), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<span> text=\"Sign in\"; size=40x16px, color=rgb(64, 64, 64), font-size=12px, font-weight=600, saturation_fg=0%, saturation_bg=0%",
+        "<span> class=\"label\" text=\"Pass\"; size=52x16px, color=rgb(77, 77, 77), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"row\" text=\"beta Sign in\"; size=220x20px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"row\" text=\"Email\"; size=220x28px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%"
+      ],
+      "Element feedback": []
+    },
+    {
+      "ID": "a0ce6d053c87b035",
+      "Element_descriptor": "<span> text=\"Sign in\"; size=40x16px, color=rgb(64, 64, 64), font-size=12px, font-weight=600, saturation_fg=0%, saturation_bg=0%",
+      "Element_type": "span",
+      "Neighbor_elements": [
+        "<span> class=\"muted-badge\" text=\"beta\"; size=37x20px, color=rgb(77, 77, 77), bg=rgb(235, 235, 235), font-size=11px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"row\" text=\"beta Sign in\"; size=220x20px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<span> class=\"label\" text=\"Email\"; size=52x16px, color=rgb(77, 77, 77), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"row\" text=\"Email\"; size=220x28px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"card\" aria-label=\"Sign-in panel\"\" text=\"beta Sign in Email Pass Forgot? Submit\"; size=238x136px, color=rgb(51, 51, 51), bg=rgb(255, 255, 255), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%"
+      ],
+      "Element feedback": []
+    },
+    {
+      "ID": "a16d03462beaa497",
+      "Element_descriptor": "<div> class=\"row\" text=\"Email\"; size=220x28px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+      "Element_type": "div",
+      "Neighbor_elements": [
+        "<input> aria-label=\"email input\"\" placeholder=\"name@example.com\"; size=134x28px, color=rgb(51, 51, 51), bg=rgb(250, 250, 250), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"card\" aria-label=\"Sign-in panel\"\" text=\"beta Sign in Email Pass Forgot? Submit\"; size=238x136px, color=rgb(51, 51, 51), bg=rgb(255, 255, 255), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"row\" text=\"beta Sign in\"; size=220x20px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"row\" text=\"Pass\"; size=220x28px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<input> aria-label=\"password input\"\" placeholder=\"••••••••\"; size=134x28px, color=rgb(51, 51, 51), bg=rgb(250, 250, 250), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%"
+      ],
+      "Element feedback": []
+    },
+    {
+      "ID": "0a18ae08a59af516",
+      "Element_descriptor": "<span> class=\"label\" text=\"Email\"; size=52x16px, color=rgb(77, 77, 77), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+      "Element_type": "span",
+      "Neighbor_elements": [
+        "<span> class=\"muted-badge\" text=\"beta\"; size=37x20px, color=rgb(77, 77, 77), bg=rgb(235, 235, 235), font-size=11px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<span> class=\"label\" text=\"Pass\"; size=52x16px, color=rgb(77, 77, 77), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<span> text=\"Sign in\"; size=40x16px, color=rgb(64, 64, 64), font-size=12px, font-weight=600, saturation_fg=0%, saturation_bg=0%",
+        "<a> aria-label=\"forgot password link\"\" text=\"Forgot?\"; size=43x16px, color=rgb(80, 89, 98), font-size=12px, font-weight=400, saturation_fg=10%, saturation_bg=0%",
+        "<div> class=\"row\" text=\"Email\"; size=220x28px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%"
+      ],
+      "Element feedback": []
+    },
+    {
+      "ID": "a5f48026b0306cd2",
+      "Element_descriptor": "<input> aria-label=\"email input\"\" placeholder=\"name@example.com\"; size=134x28px, color=rgb(51, 51, 51), bg=rgb(250, 250, 250), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+      "Element_type": "input",
+      "Neighbor_elements": [
+        "<div> class=\"row\" text=\"Email\"; size=220x28px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"card\" aria-label=\"Sign-in panel\"\" text=\"beta Sign in Email Pass Forgot? Submit\"; size=238x136px, color=rgb(51, 51, 51), bg=rgb(255, 255, 255), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"row\" text=\"beta Sign in\"; size=220x20px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<input> aria-label=\"password input\"\" placeholder=\"••••••••\"; size=134x28px, color=rgb(51, 51, 51), bg=rgb(250, 250, 250), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"row\" text=\"Pass\"; size=220x28px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%"
+      ],
+      "Element feedback": []
+    },
+    {
+      "ID": "518a839ce4bf9aed",
+      "Element_descriptor": "<div> class=\"row\" text=\"Pass\"; size=220x28px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+      "Element_type": "div",
+      "Neighbor_elements": [
+        "<input> aria-label=\"password input\"\" placeholder=\"••••••••\"; size=134x28px, color=rgb(51, 51, 51), bg=rgb(250, 250, 250), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"card\" aria-label=\"Sign-in panel\"\" text=\"beta Sign in Email Pass Forgot? Submit\"; size=238x136px, color=rgb(51, 51, 51), bg=rgb(255, 255, 255), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"row\" text=\"Forgot? Submit\"; size=220x24px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"row\" text=\"Email\"; size=220x28px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<input> aria-label=\"email input\"\" placeholder=\"name@example.com\"; size=134x28px, color=rgb(51, 51, 51), bg=rgb(250, 250, 250), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%"
+      ],
+      "Element feedback": []
+    },
+    {
+      "ID": "effd4cffa4e75b32",
+      "Element_descriptor": "<span> class=\"label\" text=\"Pass\"; size=52x16px, color=rgb(77, 77, 77), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+      "Element_type": "span",
+      "Neighbor_elements": [
+        "<a> aria-label=\"forgot password link\"\" text=\"Forgot?\"; size=43x16px, color=rgb(80, 89, 98), font-size=12px, font-weight=400, saturation_fg=10%, saturation_bg=0%",
+        "<span> class=\"label\" text=\"Email\"; size=52x16px, color=rgb(77, 77, 77), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<span> class=\"muted-badge\" text=\"beta\"; size=37x20px, color=rgb(77, 77, 77), bg=rgb(235, 235, 235), font-size=11px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<span> text=\"Sign in\"; size=40x16px, color=rgb(64, 64, 64), font-size=12px, font-weight=600, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"row\" text=\"Pass\"; size=220x28px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%"
+      ],
+      "Element feedback": []
+    },
+    {
+      "ID": "1ece381defb4e30b",
+      "Element_descriptor": "<input> aria-label=\"password input\"\" placeholder=\"••••••••\"; size=134x28px, color=rgb(51, 51, 51), bg=rgb(250, 250, 250), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+      "Element_type": "input",
+      "Neighbor_elements": [
+        "<div> class=\"row\" text=\"Pass\"; size=220x28px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"card\" aria-label=\"Sign-in panel\"\" text=\"beta Sign in Email Pass Forgot? Submit\"; size=238x136px, color=rgb(51, 51, 51), bg=rgb(255, 255, 255), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<input> aria-label=\"email input\"\" placeholder=\"name@example.com\"; size=134x28px, color=rgb(51, 51, 51), bg=rgb(250, 250, 250), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"row\" text=\"Forgot? Submit\"; size=220x24px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"row\" text=\"Email\"; size=220x28px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%"
+      ],
+      "Element feedback": []
+    },
+    {
+      "ID": "3fa4e3b19c6cef0a",
+      "Element_descriptor": "<div> class=\"row\" text=\"Forgot? Submit\"; size=220x24px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+      "Element_type": "div",
+      "Neighbor_elements": [
+        "<div> class=\"row\" text=\"Pass\"; size=220x28px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<input> aria-label=\"password input\"\" placeholder=\"••••••••\"; size=134x28px, color=rgb(51, 51, 51), bg=rgb(250, 250, 250), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"card\" aria-label=\"Sign-in panel\"\" text=\"beta Sign in Email Pass Forgot? Submit\"; size=238x136px, color=rgb(51, 51, 51), bg=rgb(255, 255, 255), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"row\" text=\"Email\"; size=220x28px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<input> aria-label=\"email input\"\" placeholder=\"name@example.com\"; size=134x28px, color=rgb(51, 51, 51), bg=rgb(250, 250, 250), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%"
+      ],
+      "Element feedback": []
+    },
+    {
+      "ID": "25048394f3009be2",
+      "Element_descriptor": "<a> aria-label=\"forgot password link\"\" text=\"Forgot?\"; size=43x16px, color=rgb(80, 89, 98), font-size=12px, font-weight=400, saturation_fg=10%, saturation_bg=0%",
+      "Element_type": "a",
+      "Neighbor_elements": [
+        "<span> class=\"label\" text=\"Pass\"; size=52x16px, color=rgb(77, 77, 77), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<span> class=\"label\" text=\"Email\"; size=52x16px, color=rgb(77, 77, 77), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"row\" text=\"Forgot? Submit\"; size=220x24px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"row\" text=\"Pass\"; size=220x28px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<span> class=\"muted-badge\" text=\"beta\"; size=37x20px, color=rgb(77, 77, 77), bg=rgb(235, 235, 235), font-size=11px, font-weight=400, saturation_fg=0%, saturation_bg=0%"
+      ],
+      "Element feedback": []
+    },
+    {
+      "ID": "5aeb01c976f54741",
+      "Element_descriptor": "<button> aria-label=\"submit form\"\" text=\"Submit\"; size=80x24px, color=rgb(51, 51, 51), bg=rgb(230, 230, 230), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+      "Element_type": "button",
+      "Neighbor_elements": [
+        "<input> aria-label=\"password input\"\" placeholder=\"••••••••\"; size=134x28px, color=rgb(51, 51, 51), bg=rgb(250, 250, 250), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"row\" text=\"Forgot? Submit\"; size=220x24px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"row\" text=\"Pass\"; size=220x28px, color=rgb(51, 51, 51), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<div> class=\"card\" aria-label=\"Sign-in panel\"\" text=\"beta Sign in Email Pass Forgot? Submit\"; size=238x136px, color=rgb(51, 51, 51), bg=rgb(255, 255, 255), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%",
+        "<input> aria-label=\"email input\"\" placeholder=\"name@example.com\"; size=134x28px, color=rgb(51, 51, 51), bg=rgb(250, 250, 250), font-size=12px, font-weight=400, saturation_fg=0%, saturation_bg=0%"
+      ],
+      "Element feedback": []
+    }
+  ]
+}
