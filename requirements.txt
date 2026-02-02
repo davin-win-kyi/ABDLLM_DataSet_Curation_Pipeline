@@ -7,3 +7,9 @@ selenium>=4.16.0
 
 # Optional but strongly recommended for Selenium stability
 webdriver-manager>=4.0.1
+
+# load dot_env: for openai key
+python-dotenv==1.0.1
+
+beautifulsoup4==4.12.3
+lxml==5.2.1

@@ -1,1 +1,4 @@
 .env
+out/website_sourcecode_list.json
+out/injection_scripts.json
+out/final_dataset.json

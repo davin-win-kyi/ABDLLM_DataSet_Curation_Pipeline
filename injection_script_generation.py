@@ -20,10 +20,10 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from openai import OpenAI
-import load_dotenv
+from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 
-load_dotenv.load_dotenv()
+load_dotenv()
 
 # --------------------------------------------------------------------------
 # Configuration

@@ -1,0 +1,65 @@
+{
+  "dataset_websites": [
+    { "Url": "https://www.amazon.com/" },
+    { "Url": "https://www.target.com/" },
+    { "Url": "https://www.costco.com/" },
+    { "Url": "https://www.ebay.com/" },
+    { "Url": "https://www.staples.com/" },
+    { "Url": "https://www.sears.com/" },
+
+    { "Url": "https://www.nordstrom.com/" },
+    { "Url": "https://www.bloomingdales.com/" },
+    { "Url": "https://www.jcpenney.com/" },
+    { "Url": "https://shop.lululemon.com/" },
+    { "Url": "https://www.bananarepublic.com/" },
+    { "Url": "https://oldnavy.gap.com/" },
+    { "Url": "https://www.gap.com/" },
+    { "Url": "https://www.hollisterco.com/" },
+    { "Url": "https://www.macys.com/" },
+    { "Url": "https://www.uniqlo.com/" },
+    { "Url": "https://www.ateliernewyork.com/" },
+
+    { "Url": "https://www.wayfair.com/" },
+    { "Url": "https://www.ikea.com/" },
+    { "Url": "https://www.potterybarn.com/" },
+    { "Url": "https://www.lego.com/" },
+
+    { "Url": "https://www.dominos.com/" },
+    { "Url": "https://www.chipotle.com/" },
+    { "Url": "https://www.kfc.com/" },
+    { "Url": "https://www.pizzahut.com/" },
+    { "Url": "https://www.starbucks.com/" },
+    { "Url": "https://www.dunkindonuts.com/" },
+    { "Url": "https://www.chick-fil-a.com/" },
+
+    { "Url": "https://www.ubereats.com/" },
+    { "Url": "https://www.yelp.com/" },
+
+    { "Url": "https://www.booking.com/" },
+    { "Url": "https://www.southwest.com/" },
+    { "Url": "https://www.aircanada.com/" },
+    { "Url": "https://www.greyhound.com/" },
+    { "Url": "https://www.enterprise.com/" },
+    { "Url": "https://www.hertz.com/" },
+    { "Url": "https://www.ups.com/" },
+    { "Url": "https://www.fedex.com/" },
+    { "Url": "https://store.usps.com/" },
+
+    { "Url": "https://store.steampowered.com/" },
+    { "Url": "https://store.playstation.com/" },
+    { "Url": "https://www.xbox.com/" },
+
+    { "Url": "https://www.ticketmaster.com/" },
+    { "Url": "https://www.stubhub.com/" },
+    { "Url": "https://www.fandango.com/" },
+
+    { "Url": "https://www.dell.com/" },
+    { "Url": "https://www.microcenter.com/" },
+    { "Url": "https://www.apple.com/" },
+
+    { "Url": "https://www.economist.com/" },
+    { "Url": "https://www.nytimes.com/" },
+    { "Url": "https://store.metmuseum.org/" },
+    { "Url": "https://store.moma.org/" }
+  ]
+}
