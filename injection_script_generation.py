@@ -1,34 +1,42 @@
 #!/usr/bin/env python3
 """
-Overview: Provided the source code of the target websites and the indexed 
-WCAG techniques, generate the injection scripts which will be highlighting 
-various WCAG errors on target websites
+Overview:
+Given the source code of target websites and indexed WCAG techniques,
+generate JavaScript injection scripts highlighting WCAG errors.
+
+This version:
+- Removes ALL JavaScript-related content from HTML
+- Keeps full static DOM context
+- Hard-caps HTML to avoid model context overflows
 """
 
 from __future__ import annotations
+
 import argparse
 import json
 import os
 import time
 from pathlib import Path
 from typing import Any, Dict, List, Optional
+
 from openai import OpenAI
 import load_dotenv
+from bs4 import BeautifulSoup
+
 load_dotenv.load_dotenv()
 
-
-# Injection generation configuration variables ---------------------------
-DEFAULT_MODEL = "gpt-5.2"      
-MAX_HTML_CHARS = 50_000       
+# --------------------------------------------------------------------------
+# Configuration
+DEFAULT_MODEL = "gpt-5.2"
+MAX_HTML_CHARS = 12_000       # safe cap after JS removal
 SLEEP_BETWEEN_CALLS_S = 0.25
-#--------------------------------------------------------------------------  
+# --------------------------------------------------------------------------
 
+
+# ----------------------------- Utilities ----------------------------------
 
 def extract_json_object(text: str) -> Dict[str, Any]:
-    """
-    Extract the first JSON object from a string.
-    This helps if the model accidentally outputs extra text.
-    """
+    """Extract the first JSON object from model output."""
     if not text:
         raise ValueError("Empty model output; expected JSON.")
 
@@ -37,15 +45,12 @@ def extract_json_object(text: str) -> Dict[str, Any]:
     if start == -1 or end == -1 or end <= start:
         raise ValueError(f"Could not locate JSON object in model output:\n{text[:500]}")
 
-    return json.loads(text[start : end + 1])
+    return json.loads(text[start:end + 1])
 
 
-def coalesce_techniques(wcag_obj: Dict[str, Any]) -> List[Dict[str, Any]]:
-    """
-    Support either:
-      - wcag_obj["techniques"] with "technique_id"
-      - wcag_obj["rules"] with "rule_id" (older)
-    """
+# ---------------------- WCAG helpers --------------------------------------
+
+def get_techniques(wcag_obj: Dict[str, Any]) -> List[Dict[str, Any]]:
     if isinstance(wcag_obj.get("techniques"), list):
         return wcag_obj["techniques"]
     if isinstance(wcag_obj.get("rules"), list):
@@ -55,47 +60,102 @@ def coalesce_techniques(wcag_obj: Dict[str, Any]) -> List[Dict[str, Any]]:
 
 def get_technique_id(t: Dict[str, Any]) -> Optional[str]:
     tid = t.get("technique_id") or t.get("rule_id")
-    if not tid:
-        return None
-    return str(tid).strip().upper()
+    return str(tid).strip().upper() if tid else None
 
 
 def get_technique_text(t: Dict[str, Any]) -> str:
     return (t.get("content") or "").strip()
 
 
+# --------------------- JavaScript stripping --------------------------------
+
+def strip_all_javascript(html: str) -> str:
+    """
+    Return a static HTML snapshot by removing all JavaScript content.
+
+    Removes:
+      - <script> tags (inline + external)
+      - <noscript> blocks
+      - inline JS handlers (onclick, onload, ...)
+      - javascript: URLs
+
+    Preserves:
+      - Full DOM structure
+      - Parent/sibling context
+      - Semantic HTML
+      - CSS classes and inline styles
+    """
+    soup = BeautifulSoup(html, "lxml")
+
+    # Remove script sources
+    for tag in soup.find_all(["script", "noscript"]):
+        tag.decompose()
+
+    # Remove inline JS handlers and javascript: URLs
+    for tag in soup.find_all(True):
+        for attr in list(tag.attrs.keys()):
+            if attr.lower().startswith("on"):
+                del tag.attrs[attr]
+
+        if tag.has_attr("href") and isinstance(tag["href"], str):
+            if tag["href"].strip().lower().startswith("javascript:"):
+                tag["href"] = "#"
+
+        if tag.has_attr("src") and isinstance(tag["src"], str):
+            if tag["src"].strip().lower().startswith("javascript:"):
+                del tag.attrs["src"]
+
+    return str(soup)
+
+
+# ------------------------- Prompting --------------------------------------
+
 def build_prompt(url: str, html: str, technique_id: str, technique_text: str) -> str:
-    html_snippet = html
+    static_html = strip_all_javascript(html)
+    if len(static_html) > MAX_HTML_CHARS:
+        static_html = static_html[:MAX_HTML_CHARS] + "\n<!-- TRUNCATED -->"
 
     return f"""
-You are generating a JavaScript injection snippet for accessibility research.
+    You are generating a JavaScript injection snippet for accessibility research.
 
-Goal:
-- Introduce WCAG failure technique {technique_id} in a minimal way.
-- Do NOT break the entire site; prefer localized, subtle DOM/CSS edits.
-- The snippet must be runnable with Selenium: driver.execute_script(...)
-- Wrap everything in an IIFE + try/catch.
-- Must be idempotent: safe to run multiple times.
-- Mark changed/inserted elements with data-wcag-injected="{technique_id}".
+    ABSOLUTE RULES (must follow):
+    1) You MUST modify ONLY existing elements already present in the page.
+    2) You MUST NOT create any new elements or UI.
+    - Do NOT use: document.createElement, innerHTML=, insertAdjacentHTML, appendChild, prepend, insertBefore.
+    - Do NOT inject overlays, banners, popups, tooltips, or fixed-position panels.
+    3) Prefer a small number of edits (1–3 elements max).
+    4) Idempotent:
+    - Do nothing if the chosen target element already has data-wcag-injected="{technique_id}".
+    5) Add data-wcag-injected="{technique_id}" to every element you modify.
+    6) Preserve reversibility:
+    - Before changing an attribute/style/text, store the previous value in a data-wcag-original-* attribute.
 
-URL: {url}
+    Targeting requirements:
+    - Choose a stable CSS selector that matches existing elements in this page.
+    - Your script must:
+    a) querySelector/querySelectorAll for candidates
+    b) if none found, gracefully do nothing and set notes explaining "no suitable target found"
+    c) modify an existing element in a way that introduces failure technique {technique_id}
 
-Rendered HTML (may be truncated):
-<<<HTML
-{html_snippet}
-HTML>>>
+    URL: {url}
 
-Technique description (if available):
-<<<TECHNIQUE
-{technique_text}
-TECHNIQUE>>>
+    Static HTML snapshot (JavaScript removed):
+    <<<HTML
+    {static_html}
+    HTML>>>
 
-Return ONLY valid JSON (no markdown, no commentary), exactly:
-{{
-  "injection_js": "...",
-  "notes": "..."
-}}
-""".strip()
+    Technique description:
+    <<<TECHNIQUE
+    {technique_text}
+    TECHNIQUE>>>
+
+    Return ONLY valid JSON (no markdown, no commentary), exactly:
+    {{
+    "injection_js": "...",
+    "notes": "..."
+    }}
+    """.strip()
+
 
 
 def gpt_generate_injection(
@@ -113,32 +173,29 @@ def gpt_generate_injection(
         input=[{"role": "user", "content": prompt}],
     )
 
-    obj = extract_json_object(resp.output_text)
-
-    # Minimal validation
-    if "injection_js" not in obj or not isinstance(obj["injection_js"], str) or not obj["injection_js"].strip():
-        raise ValueError("Model output missing 'injection_js' (string).")
-    if "notes" not in obj:
-        obj["notes"] = ""
-
-    return obj
+    return extract_json_object(resp.output_text)
 
 
-# -----------------------------
-# Main
-# -----------------------------
-def main() -> None:
+# ----------------------------- CLI ----------------------------------------
+
+def build_arg_parser() -> argparse.ArgumentParser:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--source_code_json", type=str, required=True, help="out/source_code_list.json")
-    ap.add_argument("--index_wcag_techniques", type=str, required=True, help="out/index_wcag_techniques.json")
-    ap.add_argument("--out_json", type=str, required=True, help="out/injections.json")
+
+    ap.add_argument("--source_code_json", type=str, required=True)
+    ap.add_argument("--index_wcag_techniques", type=str, required=True)
+    ap.add_argument("--out_json", type=str, required=True)
 
     ap.add_argument("--model", type=str, default=DEFAULT_MODEL)
-    ap.add_argument("--max_sites", type=int, default=0, help="If >0, only first N sites")
-    ap.add_argument("--max_techniques", type=int, default=0, help="If >0, only first N techniques")
-    ap.add_argument("--limit_per_site", type=int, default=0, help="If >0, only generate N techniques per site")
+    ap.add_argument("--max_sites", type=int, default=0)
+    ap.add_argument("--max_techniques", type=int, default=0)
+    ap.add_argument("--limit_per_site", type=int, default=0)
     ap.add_argument("--sleep_s", type=float, default=SLEEP_BETWEEN_CALLS_S)
-    args = ap.parse_args()
+
+    return ap
+
+
+def main() -> None:
+    args = build_arg_parser().parse_args()
 
     if not os.getenv("OPENAI_API_KEY"):
         raise RuntimeError("OPENAI_API_KEY environment variable not set.")
@@ -152,11 +209,11 @@ def main() -> None:
     wcag_obj = json.loads(wcag_path.read_text(encoding="utf-8"))
 
     sources: List[Dict[str, Any]] = src_obj.get("source_code_list", [])
-    techniques: List[Dict[str, Any]] = coalesce_techniques(wcag_obj)
+    techniques: List[Dict[str, Any]] = get_techniques(wcag_obj)
 
-    if args.max_sites and args.max_sites > 0:
+    if args.max_sites > 0:
         sources = sources[: args.max_sites]
-    if args.max_techniques and args.max_techniques > 0:
+    if args.max_techniques > 0:
         techniques = techniques[: args.max_techniques]
 
     client = OpenAI()
@@ -175,8 +232,8 @@ def main() -> None:
             technique_id = get_technique_id(tech)
             if not technique_id:
                 continue
-            technique_text = get_technique_text(tech)
 
+            technique_text = get_technique_text(tech)
             print(f"[{s_idx+1}/{len(sources)}] {url} × {technique_id}")
 
             try:
@@ -191,15 +248,11 @@ def main() -> None:
 
                 injections.append({
                     "url": url,
-                    "website_source_code": html,
                     "WCAG_technique": {
                         "technique_id": technique_id,
                         "technique_text": technique_text,
                     },
-                    "injection": {
-                        "injection_js": gen["injection_js"],
-                        "notes": gen.get("notes", ""),
-                    }
+                    "injection": gen,
                 })
 
             except Exception as e:
@@ -212,18 +265,18 @@ def main() -> None:
                 print(f"[WARN] Failed {url} × {technique_id}: {e}")
 
             used += 1
-            if args.limit_per_site and args.limit_per_site > 0 and used >= args.limit_per_site:
+            if args.limit_per_site > 0 and used >= args.limit_per_site:
                 break
 
-            if args.sleep_s and args.sleep_s > 0:
+            if args.sleep_s > 0:
                 time.sleep(args.sleep_s)
 
-    out_obj = {"injections": injections, "failures": failures}
-    out_path.write_text(json.dumps(out_obj, indent=2), encoding="utf-8")
+    out_path.write_text(
+        json.dumps({"injections": injections, "failures": failures}, indent=2),
+        encoding="utf-8",
+    )
 
-    print(f"[OK] Wrote {len(injections)} injections -> {out_path}")
-    if failures:
-        print(f"[WARN] {len(failures)} pairs failed; see 'failures' in output.")
+    print(f"Wrote {len(injections)} injections → {out_path}")
 
 
 if __name__ == "__main__":

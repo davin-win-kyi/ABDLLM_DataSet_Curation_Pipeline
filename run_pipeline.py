@@ -32,10 +32,15 @@ SCREENSHOT_DIR = "out/screenshots"
 REQUEST_SLEEP_S = 1.0
 SELENIUM_HEADLESS = True
 PAGE_LOAD_TIMEOUT_S = 10
-POST_INJECT_WAIT_S = 1.0
+POST_INJECT_WAIT_S = 5.0
 DOM_READY_TIMEOUT_S = 5
-EXTRA_WAIT_S = 5.0
-MAX_SITES = 2
+EXTRA_WAIT_S = 2
+MAX_SITES = 5
+
+# WCAG scraping hyperparameters
+NUM_TECHNIQUES = 4
+FIRST_K_NON_FUNCTIONAL_CODES = 4
+FIRST_K_FUNCTIONAL_CODES = 4
 # ===============================================================================
 
 
@@ -56,16 +61,18 @@ def main() -> None:
     # dataset curation - output related paths
     source_code_json = out_dir / "website_sourcecode_list.json"
     injection_json = out_dir / "injection_scripts.json"
-    final_json = out_dir / "final_wcag_errors_dataset.json"
+    final_json = out_dir / "final_dataset.json"
 
 
     # 1) Collect WCAG failure content###########################################
     run([
         py, "collect_wcag_failures.py",
         "--wcag_dir", WCAG_DIR,
-        "--out_dir", str(out_dir)
+        "--out_dir", str(out_dir),
+        "--filter_mode", "non_functional",
+        "--first_k_non_functional", str(FIRST_K_NON_FUNCTIONAL_CODES),
+        "--first_k_functional", str(FIRST_K_FUNCTIONAL_CODES),
     ])
-
 
     # 2) Collect website source code#############################################
     cmd2 = [
